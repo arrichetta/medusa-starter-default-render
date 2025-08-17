@@ -14,12 +14,15 @@ services:
         fromService:
           name: medusa-redis
           type: redis
+          property: connectionString
       - key: NODE_ENV
         value: production
 
   - type: redis
     name: medusa-redis
     plan: free
+    allowList:
+      - 0.0.0.0/0
 
 databases:
   - name: medusa-db
