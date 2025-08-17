@@ -21,8 +21,8 @@ services:
   - type: redis
     name: medusa-redis
     plan: free
-    allowList:
-      - 0.0.0.0/0
+    ipAllowList:
+      - source: 0.0.0.0/0
 
 databases:
   - name: medusa-db
