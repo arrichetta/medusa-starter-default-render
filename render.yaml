@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: medusa-backend
+    env: node
+    plan: free
+    buildCommand: yarn install && yarn medusa build
+    startCommand: yarn medusa start
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: medusa-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: medusa-redis
+          type: redis
+      - key: NODE_ENV
+        value: production
+
+databases:
+  - name: medusa-db
+    plan: free
+
+redis:
+  - name: medusa-redis
+    plan: free
