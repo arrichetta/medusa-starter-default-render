@@ -17,10 +17,10 @@ services:
       - key: NODE_ENV
         value: production
 
-databases:
-  - name: medusa-db
+  - type: redis
+    name: medusa-redis
     plan: free
 
-redis:
-  - name: medusa-redis
+databases:
+  - name: medusa-db
     plan: free
